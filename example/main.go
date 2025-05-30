@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	err := client.Login("DISCORD_APP_ID")
+	err := client.Login("1302721937717334128")
 	if err != nil {
 		panic(err)
 	}

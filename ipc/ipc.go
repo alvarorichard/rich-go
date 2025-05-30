@@ -10,7 +10,7 @@ import (
 
 var socket net.Conn
 
-// Choose the right directory to the ipc socket and return it
+// GetIpcPath Choose the right directory to the ipc socket and return it
 func GetIpcPath() string {
 	variablesnames := []string{"XDG_RUNTIME_DIR", "TMPDIR", "TMP", "TEMP"}
 
@@ -35,7 +35,10 @@ func GetIpcPath() string {
 
 func CloseSocket() error {
 	if socket != nil {
-		socket.Close()
+		err := socket.Close()
+		if err != nil {
+			return err
+		}
 		socket = nil
 	}
 	return nil
